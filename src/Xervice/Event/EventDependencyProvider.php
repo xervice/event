@@ -44,6 +44,8 @@ class EventDependencyProvider extends AbstractProvider
     }
 
     /**
+     * @param \Xervice\Core\Dependency\DependencyProviderInterface $dependencyProvider
+     *
      * @return \Xervice\Event\Business\Provider\EventProviderInterface
      */
     protected function getEventProvider(DependencyProviderInterface $dependencyProvider): EventProviderInterface

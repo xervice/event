@@ -9,8 +9,6 @@ use Xervice\Core\Facade\AbstractFacade;
 
 /**
  * @method \Xervice\Event\EventFactory getFactory()
- * @method \Xervice\Event\EventConfig getConfig()
- * @method \Xervice\Event\EventClient getClient()
  */
 class EventFacade extends AbstractFacade
 {
