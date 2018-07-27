@@ -1,7 +1,7 @@
 Event
 =====================
 
-[![Build Status](https://travis-ci.org/xervice/event).svg?branch=master)](https://travis-ci.org/xervice/event)
+[![Build Status](https://travis-ci.org/xervice/event.svg?branch=master)](https://travis-ci.org/xervice/event)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/xervice/event/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/xervice/event/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/xervice/event/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/xervice/event/?branch=master)
 
