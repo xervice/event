@@ -40,16 +40,21 @@ class EventDependencyProvider extends XerviceEventDependencyProvider
 }
 ```
 
-If you want to change the Default Provider, you can change it also in the DependencyProvider by overwriting the method getEventProvider.
+The EventProvider provide a new event to the target system. In the DefaultEventProvider the events are directly routed to the ListenerProvider.
+If you want to change the DefaultEventProvider, you can overwrite it in the EventFactory in the method createEventProvider.
 ```php
     /**
      * @return \Xervice\Event\Business\Provider\EventProviderInterface
      */
-    protected function getEventProvider(DependencyProviderInterface $dependencyProvider): EventProviderInterface
+    public function createEventProvider(): EventProviderInterface
     {
-        return new DefaultEventProvider($this->getListener());
+        return new DefaultEventProvider(
+            $this->createListenerProvider()
+        );
     }
 ```
+
+The listener provider provide the events to the listener.
 
 
 Using

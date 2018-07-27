@@ -16,8 +16,6 @@ class EventDependencyProvider extends AbstractProvider
 {
     public const LISTENER = 'listener';
 
-    public const PROVIDER = 'provider';
-
     /**
      * @param \Xervice\Core\Dependency\DependencyProviderInterface $dependencyProvider
      */
@@ -25,10 +23,6 @@ class EventDependencyProvider extends AbstractProvider
     {
         $dependencyProvider[self::LISTENER] = function () {
             return $this->getListener();
-        };
-
-        $dependencyProvider[self::PROVIDER] = function (DependencyProviderInterface $dependencyProvider) {
-            return $this->getEventProvider($dependencyProvider);
         };
     }
 
@@ -41,15 +35,5 @@ class EventDependencyProvider extends AbstractProvider
     protected function getListener(): array
     {
         return [];
-    }
-
-    /**
-     * @param \Xervice\Core\Dependency\DependencyProviderInterface $dependencyProvider
-     *
-     * @return \Xervice\Event\Business\Provider\EventProviderInterface
-     */
-    protected function getEventProvider(DependencyProviderInterface $dependencyProvider): EventProviderInterface
-    {
-        return new DefaultEventProvider($this->getListener());
     }
 }

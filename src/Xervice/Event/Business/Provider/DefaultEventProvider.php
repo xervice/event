@@ -5,23 +5,22 @@ namespace Xervice\Event\Business\Provider;
 
 
 use DataProvider\EventDataProvider;
-use Xervice\Event\Business\Listener\EventListenerInterface;
 
 class DefaultEventProvider implements EventProviderInterface
 {
     /**
-     * @var array
+     * @var \Xervice\Event\Business\Listener\ListenerProviderInterface
      */
-    private $listener;
+    private $listenerProvider;
 
     /**
      * DefaultEventProvider constructor.
      *
-     * @param array $listener
+     * @param \Xervice\Event\Business\Listener\ListenerProviderInterface $listenerProvider
      */
-    public function __construct(array $listener)
+    public function __construct(\Xervice\Event\Business\Listener\ListenerProviderInterface $listenerProvider)
     {
-        $this->listener = $listener;
+        $this->listenerProvider = $listenerProvider;
     }
 
     /**
@@ -29,32 +28,6 @@ class DefaultEventProvider implements EventProviderInterface
      */
     public function provideEvent(EventDataProvider $eventDataProvider): void
     {
-        $eventName = $eventDataProvider->getName();
-
-        foreach ($this->getEventListenerList($eventName) as $listener) {
-            $listener = $this->getEventListenerFromClass($listener);
-            $listener->handleEvent($eventDataProvider);
-        }
+        $this->listenerProvider->provideListener($eventDataProvider);
     }
-
-    /**
-     * @param string $listenerClass
-     *
-     * @return \Xervice\Event\Business\Listener\EventListenerInterface
-     */
-    private function getEventListenerFromClass(string $listenerClass): EventListenerInterface
-    {
-        return new $listenerClass();
-    }
-
-    /**
-     * @param $eventName
-     *
-     * @return string[]
-     */
-    private function getEventListenerList(string $eventName): array
-    {
-        return $this->listener[$eventName] ?? [];
-    }
-
 }
