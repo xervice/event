@@ -19,4 +19,12 @@ class EventFacade extends AbstractFacade
     {
         $this->getFactory()->getEventProvider()->provideEvent($eventDataProvider);
     }
+
+    /**
+     * @param \DataProvider\EventDataProvider $eventDataProvider
+     */
+    public function eventToListener(EventDataProvider $eventDataProvider): void
+    {
+        $this->getFactory()->getListenerProvider()->provideListener($eventDataProvider);
+    }
 }

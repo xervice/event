@@ -31,7 +31,13 @@ class IntegrationTest extends \Codeception\Test\Unit
         $this->getDataProviderFacade()->cleanDataProvider();
     }
 
-    // tests
+    /**
+     * @group Xervice
+     * @group Event
+     * @group Integration
+     *
+     * @throws \Core\Locator\Dynamic\ServiceNotParseable
+     */
     public function testEvent()
     {
         $newEvent = new TestEventDataProvider();
@@ -57,6 +63,35 @@ class IntegrationTest extends \Codeception\Test\Unit
 
         $this->assertEquals(
             'test==MyTesttest==MyTest',
+            $response
+        );
+    }
+
+    /**
+     * @group Xervice
+     * @group Event
+     * @group Integration
+     *
+     * @throws \Core\Locator\Dynamic\ServiceNotParseable
+     */
+    public function testEventListener()
+    {
+        $newEvent = new TestEventDataProvider();
+        $newEvent->setData('MyTestListener');
+
+        $event = new EventDataProvider();
+        $event
+            ->setName('test')
+            ->setMessage($newEvent);
+
+        ob_start();
+        $this->getFacade()->eventToListener($event);
+
+        $response = ob_get_contents();
+        ob_end_clean();
+
+        $this->assertEquals(
+            'test==MyTestListener',
             $response
         );
     }
