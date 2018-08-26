@@ -1,10 +1,11 @@
 <?php
 
 
-namespace Xervice\Event\Business\Listener;
+namespace Xervice\Event\Business\Model\Listener;
 
 
 use DataProvider\EventDataProvider;
+use Xervice\Event\Communication\Plugin\Listener\EventListenerInterface;
 
 class ListenerProvider implements ListenerProviderInterface
 {
@@ -39,7 +40,7 @@ class ListenerProvider implements ListenerProviderInterface
     /**
      * @param string $listenerClass
      *
-     * @return \Xervice\Event\Business\Listener\EventListenerInterface
+     * @return \Xervice\Event\Communication\Plugin\Listener\EventListenerInterface
      */
     private function getEventListenerFromClass(string $listenerClass): EventListenerInterface
     {
@@ -47,7 +48,7 @@ class ListenerProvider implements ListenerProviderInterface
     }
 
     /**
-     * @param $eventName
+     * @param string $eventName
      *
      * @return string[]
      */

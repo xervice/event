@@ -1,8 +1,7 @@
 <?php
+declare(strict_types=1);
 
-
-namespace Xervice\Event\Business\Listener;
-
+namespace Xervice\Event\Communication\Plugin\Listener;
 
 use DataProvider\EventDataProvider;
 

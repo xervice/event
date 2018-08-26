@@ -1,14 +1,14 @@
 <?php
 
 
-namespace Xervice\Event;
+namespace Xervice\Event\Business;
 
 
 use DataProvider\EventDataProvider;
-use Xervice\Core\Facade\AbstractFacade;
+use Xervice\Core\Business\Model\Facade\AbstractFacade;
 
 /**
- * @method \Xervice\Event\EventFactory getFactory()
+ * @method \Xervice\Event\Business\EventBusinessFactory getFactory()
  */
 class EventFacade extends AbstractFacade
 {

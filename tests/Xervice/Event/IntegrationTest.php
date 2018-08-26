@@ -3,11 +3,11 @@ namespace XerviceTest\Event;
 
 use DataProvider\EventDataProvider;
 use DataProvider\TestEventDataProvider;
-use Xervice\Config\XerviceConfig;
-use Xervice\Core\Locator\Dynamic\DynamicLocator;
-use Xervice\Core\Locator\Locator;
+use Xervice\Config\Business\XerviceConfig;
+use Xervice\Core\Business\Model\Locator\Dynamic\Business\DynamicBusinessLocator;
+use Xervice\Core\Business\Model\Locator\Locator;
+use Xervice\DataProvider\Business\DataProviderFacade;
 use Xervice\DataProvider\DataProviderConfig;
-use Xervice\DataProvider\DataProviderFacade;
 
 require_once __DIR__ . '/TestInjection/EventDependencyProvider.php';
 
@@ -16,13 +16,13 @@ require_once __DIR__ . '/TestInjection/EventDependencyProvider.php';
  */
 class IntegrationTest extends \Codeception\Test\Unit
 {
-    use DynamicLocator;
+    use DynamicBusinessLocator;
 
     protected function _before()
     {
-        XerviceConfig::getInstance()->getConfig()->set(DataProviderConfig::FILE_PATTERN, '*.dataprovider.xml');
+        XerviceConfig::set(DataProviderConfig::FILE_PATTERN, '*.dataprovider.xml');
         $this->getDataProviderFacade()->generateDataProvider();
-        XerviceConfig::getInstance()->getConfig()->set(DataProviderConfig::FILE_PATTERN, '*.testprovider.xml');
+        XerviceConfig::set(DataProviderConfig::FILE_PATTERN, '*.testprovider.xml');
         $this->getDataProviderFacade()->generateDataProvider();
     }
 
@@ -35,8 +35,6 @@ class IntegrationTest extends \Codeception\Test\Unit
      * @group Xervice
      * @group Event
      * @group Integration
-     *
-     * @throws \Core\Locator\Dynamic\ServiceNotParseable
      */
     public function testEvent()
     {
@@ -71,8 +69,6 @@ class IntegrationTest extends \Codeception\Test\Unit
      * @group Xervice
      * @group Event
      * @group Integration
-     *
-     * @throws \Core\Locator\Dynamic\ServiceNotParseable
      */
     public function testEventListener()
     {
@@ -97,7 +93,7 @@ class IntegrationTest extends \Codeception\Test\Unit
     }
 
     /**
-     * @return \Xervice\DataProvider\DataProviderFacade
+     * @return \Xervice\DataProvider\Business\DataProviderFacade
      */
     private function getDataProviderFacade(): DataProviderFacade
     {

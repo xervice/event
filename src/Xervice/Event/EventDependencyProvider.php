@@ -3,27 +3,25 @@
 
 namespace Xervice\Event;
 
+use Xervice\Core\Business\Model\Dependency\DependencyContainerInterface;
+use Xervice\Core\Business\Model\Dependency\Provider\AbstractDependencyProvider;
 
-use Xervice\Core\Dependency\DependencyProviderInterface;
-use Xervice\Core\Dependency\Provider\AbstractProvider;
-use Xervice\Event\Business\Provider\DefaultEventProvider;
-use Xervice\Event\Business\Provider\EventProviderInterface;
-
-/**
- * @method \Xervice\Core\Locator\Locator getLocator()
- */
-class EventDependencyProvider extends AbstractProvider
+class EventDependencyProvider extends AbstractDependencyProvider
 {
     public const LISTENER = 'listener';
 
     /**
-     * @param \Xervice\Core\Dependency\DependencyProviderInterface $dependencyProvider
+     * @param \Xervice\Core\Business\Model\Dependency\DependencyContainerInterface $container
+     *
+     * @return \Xervice\Core\Business\Model\Dependency\DependencyContainerInterface
      */
-    public function handleDependencies(DependencyProviderInterface $dependencyProvider): void
+    public function handleDependencies(DependencyContainerInterface $container): DependencyContainerInterface
     {
-        $dependencyProvider[self::LISTENER] = function () {
+        $container[self::LISTENER] = function () {
             return $this->getListener();
         };
+
+        return $container;
     }
 
     /**

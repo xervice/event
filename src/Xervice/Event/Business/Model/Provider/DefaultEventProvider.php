@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Xervice\Event\Business\Provider;
+namespace Xervice\Event\Business\Model\Provider;
 
 
 use DataProvider\EventDataProvider;
@@ -9,16 +9,16 @@ use DataProvider\EventDataProvider;
 class DefaultEventProvider implements EventProviderInterface
 {
     /**
-     * @var \Xervice\Event\Business\Listener\ListenerProviderInterface
+     * @var \Xervice\Event\Business\Model\Listener\ListenerProviderInterface
      */
     private $listenerProvider;
 
     /**
      * DefaultEventProvider constructor.
      *
-     * @param \Xervice\Event\Business\Listener\ListenerProviderInterface $listenerProvider
+     * @param \Xervice\Event\Business\Model\Listener\ListenerProviderInterface $listenerProvider
      */
-    public function __construct(\Xervice\Event\Business\Listener\ListenerProviderInterface $listenerProvider)
+    public function __construct(\Xervice\Event\Business\Model\Listener\ListenerProviderInterface $listenerProvider)
     {
         $this->listenerProvider = $listenerProvider;
     }

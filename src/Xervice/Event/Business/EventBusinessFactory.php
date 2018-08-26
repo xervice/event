@@ -1,23 +1,24 @@
 <?php
 
 
-namespace Xervice\Event;
+namespace Xervice\Event\Business;
 
 
-use Xervice\Core\Factory\AbstractFactory;
-use Xervice\Event\Business\Listener\ListenerProvider;
-use Xervice\Event\Business\Listener\ListenerProviderInterface;
-use Xervice\Event\Business\Provider\DefaultEventProvider;
-use Xervice\Event\Business\Provider\EventProviderInterface;
+use Xervice\Core\Business\Model\Factory\AbstractBusinessFactory;
+use Xervice\Event\Business\Model\Listener\ListenerProvider;
+use Xervice\Event\Business\Model\Listener\ListenerProviderInterface;
+use Xervice\Event\Business\Model\Provider\DefaultEventProvider;
+use Xervice\Event\Business\Model\Provider\EventProviderInterface;
+use Xervice\Event\EventDependencyProvider;
 
-class EventFactory extends AbstractFactory
+class EventBusinessFactory extends AbstractBusinessFactory
 {
     private $eventProvider;
 
     private $listenerProvider;
 
     /**
-     * @return \Xervice\Event\Business\Provider\EventProviderInterface
+     * @return \Xervice\Event\Business\Model\Provider\EventProviderInterface
      */
     public function createEventProvider(): EventProviderInterface
     {
@@ -27,7 +28,7 @@ class EventFactory extends AbstractFactory
     }
 
     /**
-     * @return \Xervice\Event\Business\Listener\ListenerProviderInterface
+     * @return \Xervice\Event\Business\Model\Listener\ListenerProviderInterface
      */
     public function createListenerProvider(): ListenerProviderInterface
     {
@@ -37,7 +38,7 @@ class EventFactory extends AbstractFactory
     }
 
     /**
-     * @return \Xervice\Event\Business\Provider\EventProviderInterface
+     * @return \Xervice\Event\Business\Model\Provider\EventProviderInterface
      */
     public function getEventProvider(): EventProviderInterface
     {
@@ -49,7 +50,7 @@ class EventFactory extends AbstractFactory
     }
 
     /**
-     * @return \Xervice\Event\Business\Listener\ListenerProviderInterface
+     * @return \Xervice\Event\Business\Model\Listener\ListenerProviderInterface
      */
     public function getListenerProvider(): ListenerProviderInterface
     {

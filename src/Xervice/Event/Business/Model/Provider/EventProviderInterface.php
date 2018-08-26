@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Xervice\Event\Business\Provider;
+namespace Xervice\Event\Business\Model\Provider;
 
 
 use DataProvider\EventDataProvider;

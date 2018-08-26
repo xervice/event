@@ -1,6 +1,6 @@
 <?php
 
-namespace Xervice\Event\Business\Listener;
+namespace Xervice\Event\Business\Model\Listener;
 
 use DataProvider\EventDataProvider;
 
